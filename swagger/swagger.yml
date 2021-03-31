@@ -48,10 +48,10 @@ paths:
           description: '{int} models.User.Id'
         "403":
           description: body is empty
-  /adminUser/:
+  /user/:
     get:
       tags:
-      - adminUser
+      - user
       description: get all Users
       operationId: UserController.GetAll
       responses:
@@ -61,7 +61,7 @@ paths:
             $ref: '#/definitions/models.User'
     post:
       tags:
-      - adminUser
+      - user
       description: create users
       operationId: UserController.CreateUser
       parameters:
@@ -76,10 +76,10 @@ paths:
           description: '{int} models.User.Id'
         "403":
           description: body is empty
-  /adminUser/{uid}:
+  /user/{uid}:
     get:
       tags:
-      - adminUser
+      - user
       description: get user by uid
       operationId: UserController.Get
       parameters:
@@ -97,7 +97,7 @@ paths:
           description: :uid is empty
     put:
       tags:
-      - adminUser
+      - user
       description: update the user
       operationId: UserController.Update
       parameters:
@@ -121,7 +121,7 @@ paths:
           description: :uid is not int
     delete:
       tags:
-      - adminUser
+      - user
       description: delete the user
       operationId: UserController.Delete
       parameters:
@@ -135,10 +135,10 @@ paths:
           description: '{string} delete success!'
         "403":
           description: uid is empty
-  /adminUser/login:
+  /user/login:
     post:
       tags:
-      - adminUser
+      - user
       description: Logs user into the system
       operationId: UserController.Login
       parameters:
@@ -153,10 +153,10 @@ paths:
           description: '{string} login success'
         "403":
           description: user not exist
-  /adminUser/logout:
+  /user/logout:
     get:
       tags:
-      - adminUser
+      - user
       description: Logs out current logged in user session
       operationId: UserController.logout
       responses:
@@ -189,6 +189,6 @@ definitions:
       Username:
         type: string
 tags:
-- name: adminUser
+- name: user
   description: |
     Operations about Users

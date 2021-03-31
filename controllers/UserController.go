@@ -103,11 +103,9 @@ func (u *UserController) Login() {
 	password := user.Password
 	if models.Login(username, password) {
 		u.Data["json"] = "login success"
-		u.TplName = "http://localhost:8080/swagger/"
-
-
 	} else {
-		u.Data["json"] = "user not exist"
+		u.Abort("404")
+		//u.Data["json"] = "user not exist"
 	}
 	u.ServeJSON()
 }

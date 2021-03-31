@@ -12,7 +12,7 @@ import (
 
 func init() {
 
-	beego.SetViewsPath("static")
+	beego.SetViewsPath("views")
 	beego.BConfig.RouterCaseSensitive = true
 	// beego.Router("/paperless/registerCode/get", &controllers.KeyController{})
 	// beego.Router("/paperless/registerCode/code", &controllers.KeyController{})
@@ -29,7 +29,7 @@ func init() {
 				&controllers.DCPController{},
 			),
 		),
-		beego.NSNamespace("/adminUser",
+		beego.NSNamespace("/user",
 			beego.NSInclude(
 				&controllers.UserController{},
 			),
