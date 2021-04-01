@@ -3,7 +3,6 @@ package controllers
 import (
 	"dmcs2000/models"
 	"encoding/json"
-
 	beego "github.com/beego/beego/v2/server/web"
 )
 
@@ -97,10 +96,8 @@ func (u *UserController) Delete() {
 // @Failure 403 user not exist
 // @router /login [post]
 func (u *UserController) Login() {
-	var user models.User
-	json.Unmarshal(u.Ctx.Input.RequestBody, &user)
-	username := user.Username
-	password := user.Password
+	username := u.GetString("username")
+	password := u.GetString("password")
 	if models.Login(username, password) {
 		u.Data["json"] = "login success"
 	} else {

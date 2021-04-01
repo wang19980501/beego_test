@@ -86,11 +86,11 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (data, status) {
                     alert("登录成功")
-                    if (data.code == 1) {
+                    // if (data.code == 1) {
                         setTimeout(function () {
-                            window.location.href = "/"
+                            window.location.href = "/home"
                         }, 1000)
-                    }
+                    // }
                 },
                 error: function (data, status) {
                     alert("err:" + data.message + ":" + status)
