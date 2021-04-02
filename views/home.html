@@ -9,7 +9,7 @@
     <script src="../static/js/lib/jquery.url.js"></script>
     <script src="../static/js/blog.js"></script>
 </head>
-<body>
+<body onload="run()">
 
 
 
@@ -33,6 +33,25 @@
         </ul>
     </div>
 </div>
+
+<script>
+    function run() {
+        // var token = document.token;
+
+        var token = location.search.replace("?", "");
+        // console.log(url)
+        $.ajax({
+            type: "get",
+            url: "/paperless/home/get",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            beforeSend: function (XMLHttpRequest) {
+                XMLHttpRequest.setRequestHeader("token", token);
+            },
+        })
+    }
+</script>
 
 </body>
 </html>

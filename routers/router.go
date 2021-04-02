@@ -18,14 +18,14 @@ func init() {
 	// beego.Router("/paperless/registerCode/code", &controllers.KeyController{})
 	// beego.BConfig.RouterCaseSensitive = false
 	beego.Router("/", &controllers.MainController{})
-	beego.Router("/home", &controllers.MainController{})
+	//beego.Router("/home", &controllers.HomeController{})
 	beego.Router("/ping", &controllers.PongController{})
 	beego.AutoRouter(&controllers.ObjectController{})
 
 	ns := beego.NewNamespace("/paperless",
 		beego.NSAutoRouter(&controllers.ObjectController{}),
 		beego.NSAutoRouter(&controllers.RegisterCodeController{}),
-		beego.NSNamespace("/1dcp",
+		beego.NSNamespace("/dcp",
 			beego.NSInclude(
 				&controllers.DCPController{},
 			),
@@ -35,6 +35,12 @@ func init() {
 				&controllers.UserController{},
 			),
 		),
+		beego.NSNamespace("/home",
+			beego.NSInclude(
+				&controllers.HomeController{},
+			),
+		),
+
 		//beego.NSNamespace("/adminUser",
 		//	beego.NSInclude(
 		//		&controllers.AdminUserController{},

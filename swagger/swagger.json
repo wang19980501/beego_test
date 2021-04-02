@@ -10,10 +10,10 @@
     },
     "basePath": "/paperless",
     "paths": {
-        "/1dcp/LogIn": {
+        "/dcp/LogIn": {
             "get": {
                 "tags": [
-                    "1dcp"
+                    "dcp"
                 ],
                 "description": "get reflush",
                 "operationId": "DCPController.reflush",
@@ -27,10 +27,10 @@
                 }
             }
         },
-        "/1dcp/Logout/": {
+        "/dcp/Logout/": {
             "get": {
                 "tags": [
-                    "1dcp"
+                    "dcp"
                 ],
                 "description": "get reflush",
                 "operationId": "DCPController.reflush",
@@ -44,10 +44,10 @@
                 }
             }
         },
-        "/1dcp/Reflush": {
+        "/dcp/Reflush": {
             "post": {
                 "tags": [
-                    "1dcp"
+                    "dcp"
                 ],
                 "description": "get reflush",
                 "operationId": "DCPController.reflush",
@@ -72,22 +72,41 @@
                 }
             }
         },
-        "/user/": {
+        "/home/": {
             "get": {
                 "tags": [
-                    "user"
+                    "home"
                 ],
-                "description": "get all Users",
-                "operationId": "UserController.GetAll",
+                "description": "Logs user into the system",
+                "operationId": "HomeController.Get",
                 "responses": {
                     "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.User"
-                        }
+                        "description": "{string} login success"
+                    },
+                    "403": {
+                        "description": "user not exist"
                     }
                 }
-            },
+            }
+        },
+        "/home/Get": {
+            "post": {
+                "tags": [
+                    "home"
+                ],
+                "description": "Logs user into the system",
+                "operationId": "HomeController.Get",
+                "responses": {
+                    "200": {
+                        "description": "{string} login success"
+                    },
+                    "403": {
+                        "description": "user not exist"
+                    }
+                }
+            }
+        },
+        "/user/add": {
             "post": {
                 "tags": [
                     "user"
@@ -111,6 +130,23 @@
                     },
                     "403": {
                         "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/list": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "get all Users",
+                "operationId": "UserController.GetAll",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
                     }
                 }
             }
@@ -248,37 +284,16 @@
         }
     },
     "definitions": {
-        "models.Profile": {
-            "title": "Profile",
-            "type": "object",
-            "properties": {
-                "Address": {
-                    "type": "string"
-                },
-                "Age": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Email": {
-                    "type": "string"
-                },
-                "Gender": {
-                    "type": "string"
-                }
-            }
-        },
         "models.User": {
             "title": "User",
             "type": "object",
             "properties": {
                 "Id": {
-                    "type": "string"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Password": {
                     "type": "string"
-                },
-                "Profile": {
-                    "$ref": "#/definitions/models.Profile"
                 },
                 "Username": {
                     "type": "string"

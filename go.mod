@@ -5,8 +5,11 @@ go 1.13
 require github.com/beego/beego/v2 v2.0.1
 
 require (
+	github.com/astaxie/beego v1.12.3 // indirect
 	github.com/beego/bee/v2 v2.0.2 // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/flosch/pongo2 v0.0.0-20200913210552-0d938eb266f3 // indirect
+	github.com/gin-gonic/gin v1.6.3 // indirect
 	github.com/go-delve/delve v1.6.0 // indirect
 	github.com/lib/pq v1.10.0 // indirect
 	github.com/magiconair/properties v1.8.4 // indirect

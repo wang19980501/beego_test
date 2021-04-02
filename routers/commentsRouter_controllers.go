@@ -43,20 +43,20 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["dmcs2000/controllers:UserController"] = append(beego.GlobalControllerRouter["dmcs2000/controllers:UserController"],
+    beego.GlobalControllerRouter["dmcs2000/controllers:HomeController"] = append(beego.GlobalControllerRouter["dmcs2000/controllers:HomeController"],
         beego.ControllerComments{
-            Method: "Post",
+            Method: "A",
             Router: "/",
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["dmcs2000/controllers:UserController"] = append(beego.GlobalControllerRouter["dmcs2000/controllers:UserController"],
+    beego.GlobalControllerRouter["dmcs2000/controllers:HomeController"] = append(beego.GlobalControllerRouter["dmcs2000/controllers:HomeController"],
         beego.ControllerComments{
-            Method: "GetAll",
-            Router: "/",
-            AllowHTTPMethods: []string{"get"},
+            Method: "Get",
+            Router: "/Get",
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -84,6 +84,24 @@ func init() {
             Method: "Delete",
             Router: "/:uid",
             AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["dmcs2000/controllers:UserController"] = append(beego.GlobalControllerRouter["dmcs2000/controllers:UserController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: "/add",
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["dmcs2000/controllers:UserController"] = append(beego.GlobalControllerRouter["dmcs2000/controllers:UserController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/list",
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

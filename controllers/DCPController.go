@@ -26,7 +26,7 @@ func (u *DCPController) Reflush() {
 	var user models.User
 	json.Unmarshal(u.Ctx.Input.RequestBody, &user)
 	uid := models.AddUser(user)
-	u.Data["json"] = map[string]string{"uid": uid}
+	u.Data["json"] = map[string]int{"uid": uid}
 	u.ServeJSON()
 }
 
@@ -39,7 +39,7 @@ func (u *DCPController) Logout() {
 	var user models.User
 
 	uid := models.AddUser(user)
-	u.Data["json"] = map[string]string{"uid": uid}
+	u.Data["json"] = map[string]int{"uid": uid}
 	u.ServeJSON()
 }
 
@@ -52,6 +52,6 @@ func (u *DCPController) LogIn() {
 	var user models.User
 
 	uid := models.AddUser(user)
-	u.Data["json"] = map[string]string{"uid": uid}
+	u.Data["json"] = map[string]int{"uid": uid}
 	u.ServeJSON()
 }

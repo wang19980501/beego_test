@@ -8,10 +8,10 @@ info:
     email: zhangzhongqiang@highsion.com
 basePath: /paperless
 paths:
-  /1dcp/LogIn:
+  /dcp/LogIn:
     get:
       tags:
-      - 1dcp
+      - dcp
       description: get reflush
       operationId: DCPController.reflush
       responses:
@@ -19,10 +19,10 @@ paths:
           description: '{int} models.User.Id'
         "404":
           description: User not found
-  /1dcp/Logout/:
+  /dcp/Logout/:
     get:
       tags:
-      - 1dcp
+      - dcp
       description: get reflush
       operationId: DCPController.reflush
       responses:
@@ -30,10 +30,10 @@ paths:
           description: '{string} string'
         "404":
           description: User not found
-  /1dcp/Reflush:
+  /dcp/Reflush:
     post:
       tags:
-      - 1dcp
+      - dcp
       description: get reflush
       operationId: DCPController.reflush
       parameters:
@@ -48,34 +48,28 @@ paths:
           description: '{int} models.User.Id'
         "403":
           description: body is empty
-  /user/:
+  /home/:
     get:
       tags:
-      - user
-      description: get all Users
-      operationId: UserController.GetAll
+      - home
+      description: Logs user into the system
+      operationId: HomeController.Get
       responses:
         "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.User'
+          description: '{string} login success'
+        "403":
+          description: user not exist
+  /home/Get:
     post:
       tags:
-      - user
-      description: create users
-      operationId: UserController.CreateUser
-      parameters:
-      - in: body
-        name: body
-        description: body for user content
-        required: true
-        schema:
-          $ref: '#/definitions/models.User'
+      - home
+      description: Logs user into the system
+      operationId: HomeController.Get
       responses:
         "200":
-          description: '{int} models.User.Id'
+          description: '{string} login success'
         "403":
-          description: body is empty
+          description: user not exist
   /user/{uid}:
     get:
       tags:
@@ -135,6 +129,35 @@ paths:
           description: '{string} delete success!'
         "403":
           description: uid is empty
+  /user/add:
+    post:
+      tags:
+      - user
+      description: create users
+      operationId: UserController.CreateUser
+      parameters:
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      responses:
+        "200":
+          description: '{int} models.User.Id'
+        "403":
+          description: body is empty
+  /user/list:
+    get:
+      tags:
+      - user
+      description: get all Users
+      operationId: UserController.GetAll
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
   /user/login:
     post:
       tags:
@@ -163,29 +186,15 @@ paths:
         "200":
           description: '{string} logout success'
 definitions:
-  models.Profile:
-    title: Profile
-    type: object
-    properties:
-      Address:
-        type: string
-      Age:
-        type: integer
-        format: int64
-      Email:
-        type: string
-      Gender:
-        type: string
   models.User:
     title: User
     type: object
     properties:
       Id:
-        type: string
+        type: integer
+        format: int64
       Password:
         type: string
-      Profile:
-        $ref: '#/definitions/models.Profile'
       Username:
         type: string
 tags:

@@ -86,11 +86,14 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (data, status) {
                     alert("登录成功")
-                    // if (data.code == 1) {
+                    if (data.code === 200) {
+                        document.token = data.data;
+                        var token = document.token;
+                        console.log(token)
                         setTimeout(function () {
-                            window.location.href = "/home"
+                            window.location.href = "paperless/home/?" + token
                         }, 1000)
-                    // }
+                    }
                 },
                 error: function (data, status) {
                     alert("err:" + data.message + ":" + status)
