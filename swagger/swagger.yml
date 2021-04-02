@@ -48,28 +48,6 @@ paths:
           description: '{int} models.User.Id'
         "403":
           description: body is empty
-  /home/:
-    get:
-      tags:
-      - home
-      description: Logs user into the system
-      operationId: HomeController.Get
-      responses:
-        "200":
-          description: '{string} login success'
-        "403":
-          description: user not exist
-  /home/Get:
-    post:
-      tags:
-      - home
-      description: Logs user into the system
-      operationId: HomeController.Get
-      responses:
-        "200":
-          description: '{string} login success'
-        "403":
-          description: user not exist
   /user/{uid}:
     get:
       tags:
